@@ -4,61 +4,111 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Heart Disease Prediction Tool</title>
-    <link rel="stylesheet" href="css/stylepredict.css">
-    <script src="js/script.js" defer></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@24,400,0,0" /> 
+    <link rel="stylesheet" href="prediction.css">
+    <link rel="stylesheet" href="hp.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="prediction.html" >Prediction Tool</a></li>
-                <li><a href="health-info.html">Health Info</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <main>
-        <section class="tool">
-            <h1>Heart Disease Prediction Tool</h1>
-            <p>Enter your details below to get a prediction:</p>
+    <div class="container">
 
-            <form id="prediction-form">
-                <label for="age">Age:</label>
-                <input type="number" id="age" name="age" required>
-
-                <label for="gender">Gender:</label>
-                <select id="gender" name="gender" required>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                </select>
-
-                <label for="cp">Chest Pain Type (cp):</label>
-                <input type="text" id="cp" name="cp" required>
-
-                <label for="restbp">Resting Blood Pressure (restbp):</label>
-                <input type="text" id="restbp" name="restbp" required>
-
-                <label for="chol">Cholesterol (chol):</label>
-                <input type="text" id="chol" name="chol" required>
-                
-                <label for="fbs">Fasting Blood Sugar (fbs):</label>
-                <input type="text" id="fbs" name="fbs" required>                
-                
-                <label for="exang">Exercise Induced Angina (exang):</label>
-                <input type="text" id="exang" name="exang" required>                
-                
-                <button type="submit">Predict</button>
-            </form>
-
-            <div id="result" class="hidden">
-                <h2>Prediction Result</h2>
-                <p id="result-text"></p>
+        <!--aside section start-->
+        <aside>
+            <div class="top">
+                <div class="logo"><h2>AEGIS<span class="danger">-HDPS</span></h2>
+                </div>
+                <div class="close">
+                    <span class="material-symbols-sharp">close</span>
+                </div>
             </div>
-        </section>
-    </main>
+            <!--end top-->
+
+            <div class="sidebar">
+                <a href="hp.html">
+                    <span class="material-symbols-sharp">grid_view</span>
+                    <h3>Homepage</h3>
+                </a>
+
+                <a href="#">
+                    <span class="material-symbols-sharp">person_outline</span>
+                    <h3>User profile</h3>
+                </a>
+
+                <a href="prediction_tool.html" class="active">
+                    <span class="material-symbols-sharp">Upload_2</span>
+                    <h3>Prediction Tool</h3>
+                </a>
+
+                <a href="#">
+                    <span class="material-symbols-sharp">heart_check</span>
+                    <h3>Heart Disease Info</h3>
+                </a>
+
+                <a href="#">
+                    <span class="material-symbols-sharp">monitor_weight</span>
+                    <h3>Diet</h3>
+                </a>
+
+                <a href="#">
+                    <span class="material-symbols-sharp">Settings</span>
+                    <h3>Settings</h3>
+                </a>
+
+                <a href="#">
+                    <span class="material-symbols-sharp">Info</span>
+                    <h3>About us </h3>
+                </a>
+
+                <a href="login.html">
+                    <span class="material-symbols-sharp">logout</span>
+                    <h3>Logout</h3>
+                </a>
+            </div>
+
+        </aside>
+        <!--aside section end-->
+    
+        <main>
+            <section class="tool">
+                <h1>Heart Disease Prediction Tool</h1>
+                <p>Enter your details below to get a prediction:</p>
+
+                <form id="prediction-form">
+                    <label for="age">Age:</label>
+                    <input type="number" id="age" name="age" required>
+
+                    <label for="gender">Gender:</label>
+                    <select id="gender" name="gender" required>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+
+                    <label for="cp">Chest Pain Type (cp):</label>
+                    <input type="text" id="cp" name="cp" required>
+
+                    <label for="restbp">Resting Blood Pressure (restbp):</label>
+                    <input type="text" id="restbp" name="restbp" required>
+
+                    <label for="chol">Cholesterol (chol):</label>
+                    <input type="text" id="chol" name="chol" required>
+                    
+                    <label for="fbs">Fasting Blood Sugar (fbs):</label>
+                    <input type="text" id="fbs" name="fbs" required>                
+                    
+                    <label for="exang">Exercise Induced Angina (exang):</label>
+                    <input type="text" id="exang" name="exang" required>                
+                    
+                    <button type="submit">Predict</button>
+                </form>
+
+                <div id="result" class="hidden">
+                    <h2>Prediction Result</h2>
+                    <p id="result-text"></p>
+                </div>
+            </section>
+        </main>
+    </div>
 
     <footer>
         <p>&copy; 2024 Heart Health Prediction. All rights reserved.</p>
