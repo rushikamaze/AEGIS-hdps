@@ -3,6 +3,7 @@ from flask_cors import CORS
 from flask_mysqldb import MySQL
 import bcrypt
 import pickle
+import xgboost as xgb
 import numpy as np
 
 app = Flask(__name__)
@@ -17,8 +18,11 @@ app.config['MYSQL_DB'] = 'heart_disease_db'
 mysql = MySQL(app)
 app.secret_key = "supersecretkey"
 
-# Load ML Model
-model = pickle.load(open("xgboost_model.pkl", "rb"))
+# Load the trained model
+with open("xgboost_model.pkl", "rb") as f:
+    model = pickle.load(f)
+
+print("Model loaded successfully!")
 
 # ========== USER AUTHENTICATION ==========
 @app.route('/register', methods=['POST'])
