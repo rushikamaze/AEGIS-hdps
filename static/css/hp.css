@@ -289,15 +289,12 @@ main .insights p{
     color: var(--clr-dark);
 }
 
-
 main .insights progress{
     position: relative;
     height: 68px;
     width: 68px;
     border-radius: 50px;
 }
-
-
 
 main .insights svg{
     height: 150px;

@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Heart Disease Prediction Tool</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@24,400,0,0" /> 
-    <link rel="stylesheet" href="prediction.css">
-    <link rel="stylesheet" href="hp.css">
-    <script src="script.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/prediction.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/hp.css') }}">
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
 </head>
 <body>
 
     <div class="container">
-
         <!--aside section start-->
         <aside>
             <div class="top">
@@ -25,7 +25,7 @@
             <!--end top-->
 
             <div class="sidebar">
-                <a href="hp.html">
+                <a href="{{ url_for('hp') }}">Home</a>
                     <span class="material-symbols-sharp">grid_view</span>
                     <h3>Homepage</h3>
                 </a>
@@ -35,7 +35,7 @@
                     <h3>User profile</h3>
                 </a>
 
-                <a href="prediction_tool.html" class="active">
+                <a href="{{ url_for('prediction_tool') }}"></a>
                     <span class="material-symbols-sharp">Upload_2</span>
                     <h3>Prediction Tool</h3>
                 </a>
@@ -60,7 +60,7 @@
                     <h3>About us </h3>
                 </a>
 
-                <a href="login.html">
+                <a href="{{ url_for('hp') }}"></a>
                     <span class="material-symbols-sharp">logout</span>
                     <h3>Logout</h3>
                 </a>
