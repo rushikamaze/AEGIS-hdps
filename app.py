@@ -1,28 +1,28 @@
-from flask import Flask, request, jsonify, session
-from flask_cors import CORS
+from flask import Flask, request, jsonify, render_template, session
 from flask_mysqldb import MySQL
 import bcrypt
-import pickle
-import xgboost as xgb
 import numpy as np
+import pickle  # If using a pre-trained ML model
 
 app = Flask(__name__)
-CORS(app)  # Allow frontend to talk to Flask
 
-# MySQL Config
+# Secret key for sessions
+app.secret_key = "your_secret_key"
+
+# MySQL Configuration
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = ''  # Add your MySQL password
-app.config['MYSQL_DB'] = 'heart_disease_db'
+app.config['MYSQL_PASSWORD'] = 'yourpassword'
+app.config['MYSQL_DB'] = 'yourdatabase'
 
 mysql = MySQL(app)
-app.secret_key = "supersecretkey"
 
-# Load the trained model
-with open("xgboost_model.pkl", "rb") as f:
-    model = pickle.load(f)
-
-print("Model loaded successfully!")
+# Loading pre-trained model
+try:
+    with open("xgboost_model.pkl", "rb") as model_file:
+        model = pickle.load(model_file)
+except FileNotFoundError:
+    model = None  # Disable prediction if model not found
 
 # ========== USER AUTHENTICATION ==========
 @app.route('/register', methods=['POST'])
@@ -32,7 +32,7 @@ def register():
     password = bcrypt.hashpw(data['password'].encode('utf-8'), bcrypt.gensalt())
 
     cur = mysql.connection.cursor()
-    cur.execute("INSERT INTO users (email, password) VALUES (%s, %s)", (email, password))
+    cur.execute("INSERT INTO users (email, password) VALUES (%s, %s)", (email, password.decode('utf-8')))
     mysql.connection.commit()
     cur.close()
 
@@ -70,6 +70,17 @@ def predict():
     prediction = model.predict(input_data)
 
     return jsonify({"prediction": int(prediction[0])})
+
+
+# ========== RENDER PAGES ==========
+@app.route('/')
+def home():
+    return render_template('hp.html')
+
+
+@app.route('/prediction_tool')
+def prediction_tool():
+    return render_template('prediction_tool.html')
 
 
 if __name__ == '__main__':

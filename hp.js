@@ -1,20 +1,32 @@
-
 const sideMenu = document.querySelector('aside');
-const menuBtn =  document.querySelector('menu_bar');
-const closeBtn =  document.querySelector('close_btn');
-
-
+const menuBtn = document.querySelector('#menu_bar');  // Assuming it's an ID
+const closeBtn = document.querySelector('#close_btn');  // Assuming it's an ID
 const themeToggler = document.querySelector('.theme-toggler');
 
-menuBtn.addEventListener('click',()=>{
-    sideMenu.style.display= "block"
-})
-closeBtn.addEventListener('click',()=>{
-    sideMenu.style.display= "none"
-})
+if (menuBtn) {
+    menuBtn.addEventListener('click', () => {
+        if (sideMenu) {
+            sideMenu.style.display = "block";
+        }
+    });
+}
 
+if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+        if (sideMenu) {
+            sideMenu.style.display = "none";
+        }
+    });
+}
 
-themeToggler.addEventListener('click',()=>{
-    themeToggler.querySelector('span:nth-child(1)').classList.toggle('active')
-    themeToggler.querySelector('span:nth-child(2)').classList.toggle('active')
-})
+if (themeToggler) {
+    themeToggler.addEventListener('click', () => {
+        const span1 = themeToggler.querySelector('span:nth-child(1)');
+        const span2 = themeToggler.querySelector('span:nth-child(2)');
+
+        if (span1 && span2) {
+            span1.classList.toggle('active');
+            span2.classList.toggle('active');
+        }
+    });
+}
