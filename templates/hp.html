@@ -23,13 +23,13 @@
                 </div>
                 <!--end top-->
 
-                <div class="sidebar">
-                    <a href="{{ url_for('home') }}">
+                <div class="sidebar" >
+                    <a href="{{ url_for('home') }}" class="active">
                         <span class="material-symbols-sharp">grid_view</span>
                         <h3>Homepage</h3>
                     </a>
 
-                    <a href="#" class="active">
+                    <a href="#">
                         <span class="material-symbols-sharp">person_outline</span>
                         <h3>User profile</h3>
                     </a>
@@ -59,7 +59,7 @@
                         <h3>About us </h3>
                     </a>
 
-                    <a href="#">
+                    <a href="{{ url_for('login') }}">
                         <span class="material-symbols-sharp">logout</span>
                         <h3>logout</h3>
                     </a>
