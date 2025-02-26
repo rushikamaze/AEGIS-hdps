@@ -1,0 +1,121 @@
+/* General Styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7fc;
+    color: #333;
+}
+
+/* Container Layout */
+.container {
+    display: grid;
+    grid-template-columns: 15rem auto; /* Sidebar + Main Content */
+    gap: 2rem;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+aside {
+    grid-column: 1;
+    width: 15rem;
+    background: #fff;
+    padding: 1rem;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+aside ul {
+    list-style: none;
+    padding: 0;
+}
+
+aside ul li {
+    padding: 12px 15px;
+    margin: 10px 0;
+    cursor: pointer;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: background 0.3s ease-in-out;
+}
+
+aside ul li:hover {
+    background: #e3e6f1;
+}
+
+/* Main Content */
+main {
+    grid-column: 2;  
+    width: 90%;
+    padding: 2rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    margin: auto;
+}
+
+/* Header */
+header {
+    background: #dc3545;
+    color: white;
+    text-align: center;
+    padding: 18px;
+    font-size: 26px;
+    font-weight: bold;
+    border-radius: 12px;
+}
+
+/* Sections */
+.diet-section, .avoid-section {
+    text-align: center;
+    padding: 1rem 0;
+    grid-column: 2;  
+}
+
+/* Headings */
+h2 {
+    color: #dc3545;
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+/* List Styles */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+li {
+    font-size: 18px;
+    margin: 8px 0;
+    padding: 10px 18px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 80%;
+    transition: all 0.3s ease-in-out;
+}
+
+li:hover {
+    background: #e3e6f1;
+    transform: scale(1.02);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 15px;
+    background: #343a40;
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    border-radius: 12px;
+}
+

@@ -107,6 +107,11 @@ def login():
         return render_template('login.html', error="Invalid email or password")
 
 
+@app.route('/diet')
+def diet():
+    return render_template('diet.html')
+
+
 @app.route('/prediction_tool')
 def prediction_tool():
     return render_template('prediction_tool.html')

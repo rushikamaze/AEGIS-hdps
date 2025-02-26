@@ -195,16 +195,6 @@ aside .sidebar a:hover span{
     transition: .4s ease;
 }
 
-
-/* aside .sidebar a span.msg_count{
-    background: var(--clr-danger);
-    color: var(--clr-white);
-    padding: 2px 5px;
-    font-size: 11px;
-    border-radius: var(--border-radius-1)
-} */
-
-
 /* **************
 start main secction style
 -----------------------------------------------------------*/
@@ -478,11 +468,6 @@ media query for phones
         padding: 40px;
     }
 
-    /* main .recent_order{
-        padding: 30px;
-        margin: 0 auto;
-    } */
-
     .right .profile{
         position: absolute;
         left: 70%;
@@ -501,3 +486,4 @@ media query for phones
         left: 1rem;
     }
 }
+
