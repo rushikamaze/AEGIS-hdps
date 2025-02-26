@@ -70,8 +70,15 @@ def register():
 # Login Route
 @app.route('/login', methods=['POST'])
 def login():
-    email = request.form.get('email')
-    password = request.form.get('password')
+    # Handle JSON data (used by your JavaScript)
+    if request.is_json:
+        data = request.json
+        email = data.get('email')
+        password = data.get('password')
+    # Also handle form data as fallback
+    else:
+        email = request.form.get('email')
+        password = request.form.get('password')
 
     if not email or not password:
         return jsonify({"error": "Email and password are required"}), 400
@@ -82,12 +89,23 @@ def login():
     cur.close()
     
     if user:
-        stored_hashed_password = user[0]  # Extract the hashed password
-        if check_password_hash(stored_hashed_password, password):  # Compare hashed password
+        stored_hashed_password = user[0]
+        if check_password_hash(stored_hashed_password, password):
             session['user_id'] = email
-            return jsonify({"message": "Login successful"}), 200
+            
+            # For JSON requests, return a success message
+            if request.is_json:
+                return jsonify({"message": "Login successful"}), 200
+            # For form submissions, redirect
+            else:
+                return redirect('/')
+    
+    # Return appropriate error based on request type
+    if request.is_json:
+        return jsonify({"error": "Invalid credentials"}), 401
+    else:
+        return render_template('login.html', error="Invalid email or password")
 
-    return jsonify({"error": "Invalid credentials"}), 401
 
 @app.route('/prediction_tool')
 def prediction_tool():

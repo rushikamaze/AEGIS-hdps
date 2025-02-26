@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
         registerBtn.addEventListener('click', () => container.classList.add('active'));
         loginBtn.addEventListener('click', () => container.classList.remove('active'));
     }
-
+    
     // ========== LOGIN FORM SUBMISSION ==========
     if (loginForm) {
         loginForm.addEventListener('submit', async (e) => {
@@ -34,13 +34,24 @@ document.addEventListener('DOMContentLoaded', () => {
                     body: JSON.stringify({ email, password })
                 });
 
-                const data = await response.json();
-
-                if (response.ok && data.status === "success") {
-                    alert('Login successful!');
-                    window.location.href = 'hp.html'; // Redirect after successful login
+                // Check if response was successful
+                if (response.ok) {
+                    // For JSON responses
+                    if (response.headers.get('content-type')?.includes('application/json')) {
+                        const data = await response.json();
+                        if (data.message === "Login successful") {
+                            window.location.href = '/'; // Redirect to the homepage
+                        } else {
+                            alert(data.error || 'Login failed. Please try again.');
+                        }
+                    } else {
+                        // If response is not JSON (e.g., a redirect)
+                        window.location.href = '/'; // Redirect to the homepage
+                    }
                 } else {
-                    alert(data.message || 'Invalid credentials. Please try again.');
+                    // Handle error response
+                    const errorData = await response.json().catch(() => ({}));
+                    alert(errorData.error || 'Invalid credentials. Please try again.');
                 }
             } catch (error) {
                 console.error("Error during login:", error);
