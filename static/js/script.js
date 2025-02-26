@@ -55,10 +55,11 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
 
             // Get input values
+            const username = registerForm.querySelector('input[type="text"]').value.trim(); // Add username
             const email = registerForm.querySelector('input[type="email"]').value.trim();
             const password = registerForm.querySelector('input[type="password"]').value.trim();
 
-            if (!email || !password) {
+            if (!username || !email || !password) {
                 alert('Please fill in all fields.');
                 return;
             }
@@ -67,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const response = await fetch('http://127.0.0.1:5000/register', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email, password })
+                    body: JSON.stringify({ username, email, password }) // Send username
                 });
 
                 const data = await response.json();
