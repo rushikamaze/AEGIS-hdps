@@ -14,6 +14,8 @@ app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = 'Bareera@21'
 app.config['MYSQL_DB'] = 'heart_disease_db'
 
+app.secret_key = 'supersecretkey'
+
 mysql = MySQL(app)
 
 # Loading pre-trained model
@@ -22,46 +24,6 @@ try:
         model = pickle.load(model_file)
 except FileNotFoundError:
     model = None                            # Disable prediction if model not found
-
-# ========== USER AUTHENTICATION ==========
-
-# @app.route('/register', methods=['POST'])
-# def register():
-#     data = request.json
-#     email = data['email']
-#     password = bcrypt.hashpw(data['password'].encode('utf-8'), bcrypt.gensalt())
-
-#     cur = mysql.connection.cursor()
-#     cur.execute("INSERT INTO users (email, password) VALUES (%s, %s)", (email, password.decode('utf-8')))
-#     mysql.connection.commit()
-#     cur.close()
-
-#     return jsonify({"message": "User registered successfully"})
-
-
-# @app.route('/login', methods=['GET', 'POST'])
-# def login():
-#     if request.content_type == 'application/json':
-#         data = request.json
-#     else:  # Handle form submission
-#         data = {
-#             'email': request.form.get('email'),
-#             'password': request.form.get('password')
-#         }
-
-#     email = data['email']
-#     password = data['password'].encode('utf-8')
-
-    # cur = mysql.connection.cursor()
-    # cur.execute("SELECT id, password FROM users WHERE email=%s", [email])
-    # user = cur.fetchone()
-    # cur.close()
-
-    # if user and bcrypt.checkpw(password, user[1].encode('utf-8')):
-    #     session['user_id'] = user[0]
-    #     return jsonify({"status": "success", "message": "Login successful"})
-    # else:
-    #     return jsonify({"status": "error", "message": "Invalid credentials"})
 
 # ========== HEART DISEASE PREDICTION ==========
 @app.route('/predict', methods=['POST'])
@@ -83,7 +45,7 @@ def predict():
 # Serve Login Page
 @app.route('/')
 def index():
-    return render_template('login.html')
+    return render_template('hp.html')
 
 # Registration Route
 @app.route('/register', methods=['POST'])
@@ -96,7 +58,8 @@ def register():
         if not email or not password:
             return jsonify({"message": "Missing email or password"}), 400
         cursor = mysql.connection.cursor()
-        cursor.execute("INSERT INTO users (email, password) VALUES (%s, %s)", (email, password))
+        hashed_password = generate_password_hash(password)
+        cursor.execute("INSERT INTO users (email, password) VALUES (%s, %s)", (email, hashed_password))
         mysql.connection.commit()
         cursor.close()
 
@@ -117,15 +80,27 @@ def login():
     cur.execute("SELECT password FROM users WHERE email = %s", (email,))
     user = cur.fetchone()
     cur.close()
+    
+    if user:
+        stored_hashed_password = user[0]  # Extract the hashed password
+        if check_password_hash(stored_hashed_password, password):  # Compare hashed password
+            session['user_id'] = email
+            return jsonify({"message": "Login successful"}), 200
 
-    if user and check_password_hash(user[0], password):
-        return jsonify({"message": "Login successful"}), 200
-    else:
-        return jsonify({"error": "Invalid credentials"}), 401
+    return jsonify({"error": "Invalid credentials"}), 401
 
 @app.route('/prediction_tool')
 def prediction_tool():
     return render_template('prediction_tool.html')
+
+@app.route('/login_page', methods=['GET'])
+def login_page():
+    return render_template('login.html')
+
+@app.route('/logout', methods=['GET'])
+def logout():
+    session.clear()  # Clear session data
+    return redirect(url_for('login_page'))  # Redirect to login page
 
 if __name__ == '__main__':
     app.run(debug=True)
