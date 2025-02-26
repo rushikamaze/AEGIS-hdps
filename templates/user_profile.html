@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile Settings</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/user_profile.css') }}">
+
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+        
+            <div class="profile-image">
+                <img id="preview-image" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='150' height='150'><rect width='150' height='150' fill='black'/><text x='75' y='75' font-size='20' text-anchor='middle' fill='white' dominant-baseline='middle'>Upload Image</text></svg>" alt="Profile Image">
+                <label for="file-upload" class="upload-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M9 16h6v-6h4l-7-7-7 7h4v6zm-4 2h14v2H5v-2z"/>
+                    </svg>
+                </label>
+                <input type="file" id="file-upload" accept="image/*">
+                
+            </div>
+            
+            <div class="user-info">
+                <div class="form-group">
+                    <input type="text" id="display-name" placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <input type="email" id="user-email" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="user-age"></label>
+                    <input type="number" id="user-age" placeholder="Age" min="1" max="120">
+                </div>
+                <div class="form-group">
+                    <select id="user-gender">
+                        <option value="">Select Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        
+        <div class="profile-content">
+            <h2>Profile Settings</h2>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="first-name">Name</label>
+                    <input type="text" id="first-name" placeholder="First name">
+                </div>
+                <div class="form-group">
+                    <label for="surname">Surname</label>
+                    <input type="text" id="surname" placeholder="Surname">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="mobile">Mobile Number</label>
+                <input type="tel" id="mobile" placeholder="Enter phone number">
+            </div>
+
+            <div class="form-group">
+                <label for="Blood Group">Blood Group </label>
+                <input type="text" id="Blood Group" placeholder="Enter Blood Group">
+            </div>
+
+            <div class="form-group">
+                <label for="Address">Address </label>
+                <input type="text" id="Address" placeholder="Enter Address">
+            </div>
+            
+
+            <!--<div class="form-group">
+                <label for="Previous History">Previous History</label>
+                <input type="file" id="imageUpload" accept="image/*">
+                <br>
+                <img id="imagePreview" class="preview">
+            </div>-->
+            
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="country">Country</label>
+                    <input type="text" id="country" placeholder="Country">
+                </div>
+                <div class="form-group">
+                    <label for="state-region">State/Region</label>
+                    <input type="text" id="state-region" placeholder="State">
+                </div>
+            </div>
+            
+            <button class="save-btn" id="save-profile">Save Profile</button>
+        </div>
+    </div>
+    
+    <script src="user_profile.js"></script>
+    <script src="{{ url_for('static', filename='js/user_profile.js') }}"></script>
+
+</body>
+</html>
