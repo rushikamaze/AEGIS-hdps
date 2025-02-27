@@ -111,6 +111,14 @@ def login():
 def diet():
     return render_template('diet.html')
 
+@app.route('/user_profile')
+def user_profile():
+    return render_template('user_profile.html')
+
+@app.route('/dr_info')
+def dr_info():
+    return render_template('user_profile.html')
+
 
 @app.route('/prediction_tool')
 def prediction_tool():
