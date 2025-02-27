@@ -117,7 +117,7 @@ def user_profile():
 
 @app.route('/dr_info')
 def dr_info():
-    return render_template('user_profile.html')
+    return render_template('dr_info.html')
 
 
 @app.route('/prediction_tool')
