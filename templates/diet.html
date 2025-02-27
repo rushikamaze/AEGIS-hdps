@@ -28,7 +28,7 @@
                         <h3>Homepage</h3>
                     </a>
 
-                    <a href="#">
+                    <a href="{{ url_for('user_profile') }}">
                         <span class="material-symbols-sharp">person_outline</span>
                         <h3>User profile</h3>
                     </a>
@@ -38,11 +38,11 @@
                         <h3>Prediction Tool</h3>
                     </a>
 
-                    <a href="#">
+                    <a href="{{ url_for('dr_info') }}">
                         <span class="material-symbols-sharp">heart_check</span>
-                        <h3>Heart Disease Info</h3>
+                        <h3>Dr's Info</h3>
                     </a>
-
+    
                     <a href="{{ url_for('diet') }}" class="active">
                         <span class="material-symbols-sharp">monitor_weight</span>
                         <h3>Diet</h3>
@@ -52,7 +52,6 @@
                         <span class="material-symbols-sharp">Settings</span>
                         <h3>Settings</h3>
                     </a>
-
                     <a href="#">
                         <span class="material-symbols-sharp">Info</span>
                         <h3>About us </h3>
