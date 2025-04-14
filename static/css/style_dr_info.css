@@ -1,0 +1,736 @@
+:root {
+    --image-0: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAGqSURBVHgBvVXNSsNAEP42pkltUxBNKL0VaS/Fg9AH0EfwEfoIPesliDcP6tUXEg/ePHiRKlS8iAoGlfgTZ+KuXSJJbdL4wTCz08l8O9PdWUAiAoYkDyRRigyRAPkGGfEjChEGB34APqkDkiWk4AXokjI0lxgDDtLRJqmyYXwCV5J1gGwI3XYcxyO9RtJ9BFZ513oVrus2OLCiHJgRvu9zReYlEWibHGn54grtvAQM+qitkr4CN0w2NwJOrnbOyXeBDXI3VD7P82ICKw9Bcuc+sEnuaqvVqhWuIJmcd97pdGz58+IJsHMKbJNdm5lATy51u9/vVzA5YQsky/IEiTwE63rylDAB7UjnadFWlHEpkyh0TKfBQAnguUXj51Ct516Bls82UFJrJCpMIFAeRCn/gYaobAL8DwEdqSfWf3hwpkLleAfGNE1jn3kB7GW8rbnkGjjq9XoWE4h6vd48B46fgduiid+oG2fAPuVtcod+JiC9rytBELiWZfE0FGEYgmyQju+JtKFsBq0Fft8j6g7uSO6/uz8BB5v8fZpwySxy9tuyBWqt4kxod+sLV/8hOG/r5r4AAAAASUVORK5CYII=);
+    --image-1: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAZCAYAAAA14t7uAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAJfSURBVHgBrVaxctNAEN2VA7XyBy41MAzmD0QHVc4JMOkcvgD7Cyx3lKSjS+gYbCSlpML+AsIMw7hDJXSiduzj7d1ZyBrb2BFv5ub2TrqnvXe7e2LagOdKtTTREcyQmZvopeVa62vMf2WidJSm403ruTpxqlTzhugCZCH9A/jIGO++TNM0qz7zyoNnSoVz5i+ONEc/wOLHM60Ph0nC0sD2CHM9eJTJe3eYf2Bdf6PHJ0opjzlxw3OQRfAkpy14cXwc4SN9530EaQYrxLJ98RSmL15+iOOIdkTZIdndUncjhWh6G1LBR2xLM/eMl8wX+I5viEVXp2m2L+kSozh+g26M1jwgOrMeMxtjrvWAakC79XDyyBBD5IdiNIiuqQactnLYLUNMNvBpmKa1iB0yNB86Nz36j4AcRXgK8W8xlqdZB9DXyCCZ6GmnLTQOqQYkF9D5cNvweTDG7llINTD/u94SIzku0efInk4dOSCDTW2id4ZY6gEGV7B9BHeXbgGU2DNto2uyktIHKCBkq1lfWa12hmhbeGt5qCB+j1PE5LnYKIPJPpLcMEfGW60vy4W/iGNMRmSFb90l6u9CKnUYmduBmc2IVkrCSoI0tG6TXD/M3XXFu4yTdrsDCSIzwLrqLdIoD75Np/n9IPiEIz7Foif3goC+T6eTdaSejSaSkjlKkrT6TqM6AaKfIP8FciXltEqOnXQRmm/Flvo9jOPXtAZMGyC3NFZ+Jskm5nS2WPSg/SuRqfDU1mHai1ggobQAuYvRJeQXoL3t6hc0tj0UzR8EwRXID9nW2Qku2afxDiX2D8WvDZlWJQSBAAAAAElFTkSuQmCC);
+    --image-2: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAACoSURBVHgBhY/BDcJADATXUfIPFRA6oANCBTgSSDyhAzqAEugA6OCoIJSQEtIB/DnFrCNOPLF0srX2ztkChqqWObAzoOLrBuARQui9J1vVahBpvYlf9G+zpQ9lUeT0bXYw27O+sa4KkctI2DSNo6Z0zBKW2pOppDbJ8CdyM7uKyJHIdq3q+IW7+dWdxFcegXMBrCjOfTAtGc0O4w4JRXfNVItfAAR3u/4BdSVCmLo64a4AAAAASUVORK5CYII=);
+    --image-3: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB0AAAAWCAYAAAA8VJfMAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAGlSURBVHgB7ZbdbcIwFIXvNdDXMgJsQDcIGzi0oD6GCQoTECagG6SPFaWJNwAmQJ2gZoM89yfusUKkCPETCnnjk6zEjnNPzvWNE36UsvFDFDCzQ+WiE2OG70op7rruCgMttIUxZk0lwELckjESp/G3Mc3qRtDioPkzpcZ0QR6kdNiYwKTdOgRb1qkhZkWpyyc0jadpIwuazkBKWb8RIjCpwyXiv0DH9tvCTkiSJH6LokEF1hn9GvMnnnBE/6QrpWdjQMAxzEPEduBUZ9er+cmvqbtmr9PxcfSRBQ839pHyBRUgK0pKi3KJjHkqivT2PLHr5mkY+plrVPW8J+XEposOgMwMfplXmN/K3O1bIrEviHU9jaImgowRZIB0rTpIG+1wB8E55k3Q/YC7u1kYPtMBBB0h77qCQsB6BXDd2HaHd9A95C5PlQqQX2sUxKiG1wuC2m4oaOorSfoQi6kgR53myVzjdA2xui1/jLmnCFoKOc2zce3QGZzk9FJcRa+iV9GTsJvDQjDLeympTKBhv6mET5+uYlvrY9NWGPSoRCAY4+/B7tH6D6xh0AFkHah5AAAAAElFTkSuQmCC);
+    --image-4: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAACoSURBVHgBhY/RDYJQDEVvCfzjBOIGbiBOYEk08VM3cAMdwQ3UDXACHIER2ED+Reot+uInTV7a3Pae1woYqprGwM6AjK/ugUdZlo33ZKua9SKVN/GP5mW29KGoEzn9mjXM9qxvrLNE5DIQNkXhqCkds4Cl9mRKqU0ijERsZlcRORJZrVUdv3A3v7qT2MYdcE6AFcW5D4YlO7PDsENA0Z0z5X7m+3tm6/oHhN1DmPlXBdEAAAAASUVORK5CYII=);
+    --image-5: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAARCAYAAABXaxX/AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADjSURBVHgBvZRvEcIwDMWfBCRUwiRMQh2AhDloHWwScDAJzMEkgAMkQHJsdwPW15WO/u7ep+bfkizAO7XIoAxWdAg9NqKH6Ir/F+RYrnZ6XKrB/mgn+o88WlA9G/Qrhcxy2A8zJQ7lsluMepDZbqQW3UkOvzTWZB0xztmjhsTVAm3I0UcKskijReYHWvCWOsQxopHEGJAwegO+Ry3xrSK+HX7AiC4k6IjvNh/Bu5p9Ljy2zd1F7CrsBPsjVKkdzCa2C2s6I/9GBTEJBXkUIHYgdYFPKIwHX+ji6IEcRDe8upW1H0+tr78J+woxUAAAAABJRU5ErkJggg==);
+    --custom-width: 100vw;
+    --design-width: 1280;
+    --ratio: calc(var(--custom-width) / var(--design-width));
+  }
+  
+  /* Default classes */
+  .pos-abs {
+    position: absolute;
+  }
+  .fill-parent {
+    width: 100%;
+    height: 100%;
+  }
+  .bg-contain {
+    background-size: contain;
+  }
+  .bg-cover {
+    background-size: cover;
+  }
+  .bg-auto {
+    background-size: auto;
+  }
+  .bg-crop {
+    background-size: 100% 100%;
+  }
+  .bg-no-repeat {
+    background-repeat: no-repeat;
+  }
+  .pos-init {
+    top: 0px;
+    left: 0px;
+  }
+  .image-div {
+    background-color: transparent;
+    background-position: center;
+  }
+  /* Default classes end */
+  
+  body {
+    margin: 0px 0px;
+    padding: 0px;
+  }
+  .parent-div {
+    position: relative;
+    width: var(--custom-width);
+    height: calc(2197 * var(--ratio));
+    overflow: hidden;
+    margin: auto;
+    padding: 0px;
+    box-sizing: border-box;
+  }
+  .macbook-air--1-42 {
+    width: 100%;
+    height: 100%;
+    top: 0%;
+    left: 0%;
+    z-index: 1;
+    transform: rotate(0deg);
+    overflow: hidden;
+    background: #e9e9e9ff;
+  }
+  .find-nearby-doc-43 {
+    width: 34.38%;
+    height: 2.55%;
+    top: 2.05%;
+    left: 32.81%;
+    z-index: 0;
+    transform: rotate(0deg);
+    text-align: left;
+    line-height: 0px;
+  }
+  .find-nearby-doc-43-0 {
+    font-size: calc(48 * var(--ratio));
+  
+    line-height: calc(48 * var(--ratio));
+  
+    font-family: Roboto;
+    font-weight: 700;
+  
+    text-decoration: none;
+    text-transform: none;
+    white-space: pre-wrap;
+    color: #000000ff;
+  }
+  .connect-with-ex-44 {
+    width: 66.88%;
+    height: 4.1%;
+    top: 5.05%;
+    left: 16.56%;
+    opacity: 0.8;
+    z-index: 9;
+    transform: rotate(0deg);
+    text-align: left;
+    line-height: 0px;
+  }
+  .connect-with-ex-44-0 {
+    font-size: calc(38 * var(--ratio));
+  
+    line-height: calc(38 * var(--ratio));
+  
+    font-family: Roboto;
+    font-weight: 300;
+  
+    text-decoration: none;
+    text-transform: none;
+    white-space: pre-wrap;
+    color: #4e4848ff;
+  }
+  .nodeBg-48 {
+    opacity: 1;
+    background-image: var(--image-5);
+  }
+  .vector-48 {
+    width: 2.7%;
+    height: 0.74%;
+    top: 8.72%;
+    left: 89.53%;
+    z-index: 3;
+    transform: rotate(NaNdeg);
+    overflow: hidden;
+  }
+  .rectangle-1-45 {
+    width: 88.28%;
+    height: 3.73%;
+    top: 9.15%;
+    left: 5%;
+    z-index: 1;
+    transform: rotate(0deg);
+    background: #ffffffff;
+  }
+  .all-cities-46 {
+    width: 11.02%;
+    height: 1.91%;
+    top: 10.06%;
+    left: 6.88%;
+    z-index: 2;
+    transform: rotate(0deg);
+    text-align: left;
+    line-height: 0px;
+  }
+  .all-cities-46-0 {
+    font-size: calc(36 * var(--ratio));
+  
+    line-height: calc(36 * var(--ratio));
+  
+    font-family: Roboto;
+    font-weight: 400;
+  
+    text-decoration: none;
+    text-transform: none;
+    white-space: pre-wrap;
+    color: #000000ff;
+  }
+  .component-1-4183-container {
+    width: 90.94%;
+    height: 15.02%;
+    top: 16.11%;
+    left: 3.59%;
+    z-index: 4;
+    transform: rotate(0deg);
+  }
+  .property-1group-4168,
+  .property-1group-4171,
+  .property-1group-4174,
+  .property-1group-4177,
+  .property-1group-4180 {
+    width: 100%;
+    height: 100%;
+    top: 0%;
+    left: 0%;
+    z-index: 1;
+    transform: rotate(0deg);
+  }
+  .rectangle-2-49,
+  .rectangle-2-436,
+  .rectangle-2-450,
+  .rectangle-2-465,
+  .rectangle-2-480 {
+    width: 100%;
+    height: 100%;
+    top: 0%;
+    left: 0%;
+    z-index: 0;
+    transform: rotate(0deg);
+    background: #ffffffff;
+  }
+  .nodeBg-410,
+  .nodeBg-437,
+  .nodeBg-451,
+  .nodeBg-467,
+  .nodeBg-482 {
+    background-position: center;
+    background-repeat: no-repeat;
+    object-fit: cover;
+    opacity: 1;
+  }
+  .rectangle-3-410,
+  .rectangle-3-437 {
+    width: 16.84%;
+    height: 64.85%;
+    top: 8.18%;
+    left: 2.32%;
+    z-index: 1;
+    transform: rotate(0deg);
+    overflow: hidden;
+    border-radius: 9px;
+  }
+  .dr-priya-sharma-411,
+  .dr-rajesh-kumar-438 {
+    width: 27.75%;
+    height: 13.03%;
+    top: 8.18%;
+    left: 23.2%;
+    z-index: 2;
+    transform: rotate(0deg);
+    text-align: left;
+    line-height: 0px;
+  }
+  .dr-priya-sharma-411-0,
+  .dr-rajesh-kumar-438-0,
+  .dr-rajesh-kumar-452-0,
+  .dr-rajesh-kumar-468-0,
+  .dr-rajesh-kumar-483-0 {
+    font-size: calc(36 * var(--ratio));
+    letter-spacing: calc(0.72 * var(--ratio));
+    line-height: calc(42.12843990325928 * var(--ratio));
+  
+    font-family: Roboto;
+    font-weight: 700;
+  
+    text-decoration: none;
+    text-transform: none;
+    white-space: pre-wrap;
+    color: #000000ff;
+  }
+  .view-on-map-431,
+  .view-on-map-447 {
+    width: 12.46%;
+    height: 8.79%;
+    top: 8.18%;
+    left: 85.74%;
+    z-index: 9;
+    transform: rotate(0deg);
+    text-align: left;
+    line-height: 0px;
+  }
+  .view-on-map-431-0,
+  .c-25-km-428-0,
+  .view-on-map-447-0,
+  .c-31-km-442-0,
+  .view-on-map-461-0,
+  .c-18-km-456-0,
+  .view-on-map-477-0,
+  .c-42-km-472-0,
+  .view-on-map-492-0,
+  .c-35-km-487-0 {
+    font-size: calc(24.57 * var(--ratio));
+    letter-spacing: calc(0.49139114379882814 * var(--ratio));
+    line-height: calc(28.752142042392734 * var(--ratio));
+  
+    font-family: Roboto;
+    font-weight: 300;
+  
+    text-decoration: none;
+    text-transform: none;
+    white-space: pre-wrap;
+    color: #ff0000ff;
+  }
+  .nodeBg-433,
+  .nodeBg-448,
+  .nodeBg-462,
+  .nodeBg-478,
+  .nodeBg-493 {
+    opacity: 1;
+    background-image: var(--image-0);
+  }
+  .vector-433,
+  .vector-448 {
+    width: 2.03%;
+    height: 7.17%;
+    top: 9.39%;
+    left: 82.4%;
+    z-index: 10;
+    transform: rotate(0deg);
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+  .cardiologist-424 {
+    width: 11.34%;
+    height: 8.48%;
+    top: 21.21%;
+    left: 23.2%;
+    z-index: 3;
+    transform: rotate(0deg);
+    text-align: left;
+    line-height: 0px;
+  }
+  .cardiologist-424-0,
+  .cardiac-surgeon-439-0,
+  .cardiac-surgeon-453-0,
+  .interventional--469-0,
+  .cardiac-surgeon-484-0 {
+    font-size: calc(24 * var(--ratio));
+    letter-spacing: calc(0.48 * var(--ratio));
+    line-height: calc(28.08562660217285 * var(--ratio));
+  
+    font-family: Roboto;
+    font-weight: 300;
+  
+    text-decoration: none;
+    text-transform: none;
+    white-space: pre-wrap;
+    color: #4c4242ff;
+  }
+  .apollo-hospital-426 {
+    width: 27.92%;
+    height: 8.79%;
+    top: 35.76%;
+    left: 28.18%;
+    z-index: 5;
+    transform: rotate(0deg);
+    text-align: left;
+    line-height: 0px;
+  }
+  .apollo-hospital-426-0,
+  .max-healthcare--441-0,
+  .fortis-hospital-455-0,
+  .care-hospitals--471-0,
+  .kokilaben-hospi-486-0 {
+    font-size: calc(24.57 * var(--ratio));
+    letter-spacing: calc(0.49139114379882814 * var(--ratio));
+    line-height: calc(28.752142042392734 * var(--ratio));
+  
+    font-family: Roboto;
+    font-weight: 300;
+  
+    text-decoration: none;
+    text-transform: none;
+    white-space: pre-wrap;
+    color: #4c4242ff;
+  }
+  .c-25-km-428 {
+    width: 7.99%;
+    height: 8.79%;
+    top: 35.76%;
+    left: 56.1%;
+    z-index: 6;
+    transform: rotate(0deg);
+    text-align: left;
+    line-height: 0px;
+  }
+  .group-419,
+  .group-444 {
+    width: 1.65%;
+    height: 6.97%;
+    top: 37.58%;
+    left: 25.52%;
+    z-index: 8;
+    transform: rotate(0deg);
+  }
+  .nodeBg-420,
+  .nodeBg-445,
+  .nodeBg-459,
+  .nodeBg-475,
+  .nodeBg-490 {
+    opacity: 1;
+    background-image: var(--image-1);
+  }
+  .vector-420,
+  .vector-445,
+  .vector-459,
+  .vector-475,
+  .vector-490 {
+    width: 110%;
+    height: 108.33%;
+    top: -4.17%;
+    left: -5%;
+    z-index: 0;
+    transform: rotate(0deg);
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+  .nodeBg-421,
+  .nodeBg-460,
+  .nodeBg-476,
+  .nodeBg-491 {
+    opacity: 1;
+    background-image: var(--image-2);
+  }
+  .vector-421,
+  .vector-446,
+  .vector-460,
+  .vector-476,
+  .vector-491 {
+    width: 36.67%;
+    height: 30.55%;
+    top: 23.61%;
+    left: 31.66%;
+    z-index: 1;
+    transform: rotate(0deg);
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+  .priyasharmaapol-422 {
+    width: 25.52%;
+    height: 17.27%;
+    top: 42.73%;
+    left: 28.18%;
+    z-index: 4;
+    transform: rotate(0deg);
+    text-align: left;
+    line-height: 0px;
+  }
+  .priyasharmaapol-422-0 {
+    font-size: calc(24.57 * var(--ratio));
+    letter-spacing: calc(0.49139999389648437 * var(--ratio));
+    line-height: calc(28.752659876847247 * var(--ratio));
+  
+    font-family: Roboto;
+    font-weight: 300;
+  
+    text-decoration: none;
+    text-transform: none;
+    white-space: pre-wrap;
+    color: #4c4242ff;
+  }
+  .priyasharmaapol-422-1,
+  .rajeshkumarmaxc-440-0,
+  .anjalidesaifort-454-0,
+  .sureshreddycare-470-0,
+  .meerapatelkokil-485-0 {
+    font-size: calc(24.57 * var(--ratio));
+    letter-spacing: calc(0.49139999389648437 * var(--ratio));
+    line-height: calc(28.752659876847247 * var(--ratio));
+  
+    font-family: Roboto;
+    font-weight: 300;
+  
+    text-decoration: underline;
+    text-transform: none;
+    white-space: pre-wrap;
+    color: #4c4242ff;
+  }
+  .nodeBg-417,
+  .nodeBg-443,
+  .nodeBg-457,
+  .nodeBg-473,
+  .nodeBg-488 {
+    opacity: 1;
+    background-image: var(--image-3);
+  }
+  .vector-417,
+  .vector-443 {
+    width: 2.43%;
+    height: 6.67%;
+    top: 53.33%;
+    left: 25.17%;
+    z-index: 7;
+    transform: rotate(0deg);
+    overflow: hidden;
+  }
+  .component-2-4202-container {
+    width: 90.94%;
+    height: 15.02%;
+    top: 32%;
+    left: 3.59%;
+    z-index: 5;
+    transform: rotate(0deg);
+  }
+  .cardiac-surgeon-439 {
+    width: 15.55%;
+    height: 8.48%;
+    top: 21.21%;
+    left: 23.2%;
+    z-index: 3;
+    transform: rotate(0deg);
+    text-align: left;
+    line-height: 0px;
+  }
+  .max-healthcare--441 {
+    width: 21.48%;
+    height: 8.79%;
+    top: 35.76%;
+    left: 28.18%;
+    z-index: 5;
+    transform: rotate(0deg);
+    text-align: left;
+    line-height: 0px;
+  }
+  .c-31-km-442 {
+    width: 7.99%;
+    height: 8.79%;
+    top: 35.76%;
+    left: 49.91%;
+    z-index: 6;
+    transform: rotate(0deg);
+    text-align: left;
+    line-height: 0px;
+  }
+  .nodeBg-446 {
+    opacity: 1;
+    background-image: var(--image-4);
+  }
+  .rajeshkumarmaxc-440 {
+    width: 25.52%;
+    height: 8.48%;
+    top: 51.52%;
+    left: 28.18%;
+    z-index: 4;
+    transform: rotate(0deg);
+    text-align: left;
+    line-height: 0px;
+  }
+  .component-3-4216-container {
+    width: 90.94%;
+    height: 15.02%;
+    top: 47.88%;
+    left: 3.67%;
+    z-index: 6;
+    transform: rotate(0deg);
+  }
+  .rectangle-4-463,
+  .rectangle-4-466,
+  .rectangle-4-481 {
+    width: 100%;
+    height: 100%;
+    top: 0%;
+    left: 0%;
+    z-index: 1;
+    transform: rotate(0deg);
+    background: #ffffffff;
+  }
+  .rectangle-3-451,
+  .rectangle-3-467,
+  .rectangle-3-482 {
+    width: 16.84%;
+    height: 64.85%;
+    top: 8.18%;
+    left: 2.32%;
+    z-index: 2;
+    transform: rotate(0deg);
+    overflow: hidden;
+    border-radius: 9px;
+  }
+  .dr-rajesh-kumar-452 {
+    width: 22.42%;
+    height: 13.03%;
+    top: 8.18%;
+    left: 23.2%;
+    z-index: 3;
+    transform: rotate(0deg);
+    text-align: left;
+    line-height: 0px;
+  }
+  .view-on-map-461,
+  .view-on-map-477,
+  .view-on-map-492 {
+    width: 12.46%;
+    height: 8.79%;
+    top: 8.18%;
+    left: 85.74%;
+    z-index: 10;
+    transform: rotate(0deg);
+    text-align: left;
+    line-height: 0px;
+  }
+  .vector-462,
+  .vector-478,
+  .vector-493 {
+    width: 2.03%;
+    height: 7.17%;
+    top: 9.39%;
+    left: 82.4%;
+    z-index: 11;
+    transform: rotate(0deg);
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+  .cardiac-surgeon-453 {
+    width: 15.55%;
+    height: 8.48%;
+    top: 21.21%;
+    left: 23.2%;
+    z-index: 4;
+    transform: rotate(0deg);
+    text-align: left;
+    line-height: 0px;
+  }
+  .fortis-hospital-455 {
+    width: 33.68%;
+    height: 8.79%;
+    top: 35.76%;
+    left: 28.18%;
+    z-index: 6;
+    transform: rotate(0deg);
+    text-align: left;
+    line-height: 0px;
+  }
+  .c-18-km-456 {
+    width: 7.99%;
+    height: 8.79%;
+    top: 35.76%;
+    left: 62.29%;
+    z-index: 7;
+    transform: rotate(0deg);
+    text-align: left;
+    line-height: 0px;
+  }
+  .group-458,
+  .group-474,
+  .group-489 {
+    width: 1.65%;
+    height: 6.97%;
+    top: 37.58%;
+    left: 25.52%;
+    z-index: 9;
+    transform: rotate(0deg);
+  }
+  .anjalidesaifort-454,
+  .sureshreddycare-470 {
+    width: 25.52%;
+    height: 8.48%;
+    top: 51.52%;
+    left: 28.18%;
+    z-index: 5;
+    transform: rotate(0deg);
+    text-align: left;
+    line-height: 0px;
+  }
+  .vector-457,
+  .vector-473,
+  .vector-488 {
+    width: 2.43%;
+    height: 6.67%;
+    top: 53.33%;
+    left: 25.17%;
+    z-index: 8;
+    transform: rotate(0deg);
+    overflow: hidden;
+  }
+  .component-4-4231-container {
+    width: 90.94%;
+    height: 15.02%;
+    top: 63.77%;
+    left: 3.67%;
+    z-index: 7;
+    transform: rotate(0deg);
+  }
+  .dr-rajesh-kumar-468,
+  .dr-rajesh-kumar-483 {
+    width: 26.12%;
+    height: 13.03%;
+    top: 8.18%;
+    left: 23.2%;
+    z-index: 3;
+    transform: rotate(0deg);
+    text-align: left;
+    line-height: 0px;
+  }
+  .interventional--469,
+  .cardiac-surgeon-484 {
+    width: 24.74%;
+    height: 8.48%;
+    top: 21.21%;
+    left: 23.2%;
+    z-index: 4;
+    transform: rotate(0deg);
+    text-align: left;
+    line-height: 0px;
+  }
+  .care-hospitals--471 {
+    width: 27.23%;
+    height: 8.79%;
+    top: 35.76%;
+    left: 28.18%;
+    z-index: 6;
+    transform: rotate(0deg);
+    text-align: left;
+    line-height: 0px;
+  }
+  .c-42-km-472 {
+    width: 7.99%;
+    height: 8.79%;
+    top: 36.36%;
+    left: 56.44%;
+    z-index: 7;
+    transform: rotate(0deg);
+    text-align: left;
+    line-height: 0px;
+  }
+  .component-5-4246-container {
+    width: 90.94%;
+    height: 15.02%;
+    top: 79.65%;
+    left: 3.28%;
+    z-index: 8;
+    transform: rotate(0deg);
+  }
+  .kokilaben-hospi-486 {
+    width: 31.79%;
+    height: 8.79%;
+    top: 35.76%;
+    left: 28.18%;
+    z-index: 6;
+    transform: rotate(0deg);
+    text-align: left;
+    line-height: 0px;
+  }
+  .c-35-km-487 {
+    width: 7.99%;
+    height: 8.79%;
+    top: 35.76%;
+    left: 60.48%;
+    z-index: 7;
+    transform: rotate(0deg);
+    text-align: left;
+    line-height: 0px;
+  }
+  .meerapatelkokil-485 {
+    width: 28.26%;
+    height: 8.48%;
+    top: 51.52%;
+    left: 28.18%;
+    z-index: 5;
+    transform: rotate(0deg);
+    text-align: left;
+    line-height: 0px;
+  }
+  

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>HDPS - Heart Healthy Diet</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@24,400,0,0" />
+        <link rel="stylesheet" href="{{ url_for('static', filename='style_diet.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/hp.css') }}">
+    </head>
+    <body>
+        <div class="container">
+            <!--aside section start-->
+            <aside>
+                <div class="top">
+                    <div class="logo">
+                        <h2>AEGIS<span class="danger">-HDPS</span></h2>
+                    </div>
+                    <div class="close">
+                        <span class="material-symbols-sharp">close</span>
+                    </div>
+                </div>
+                <!--end top-->
+
+                <div class="sidebar" >
+                    <a href="{{ url_for('index') }}">
+                        <span class="material-symbols-sharp">grid_view</span>
+                        <h3>Homepage</h3>
+                    </a>
+
+                    <a href="{{ url_for('user_profile') }}">
+                        <span class="material-symbols-sharp">person_outline</span>
+                        <h3>User profile</h3>
+                    </a>
+
+                    <a href="{{ url_for('prediction_tool') }}">
+                        <span class="material-symbols-sharp">Upload_2</span>
+                        <h3>Prediction Tool</h3>
+                    </a>
+
+                    <a href="{{ url_for('dr_info') }}">
+                        <span class="material-symbols-sharp">heart_check</span>
+                        <h3>Dr's Info</h3>
+                    </a>
+    
+                    <a href="{{ url_for('diet') }}" class="active">
+                        <span class="material-symbols-sharp">monitor_weight</span>
+                        <h3>Diet</h3>
+                    </a>
+                    
+                    <a href="#">
+                        <span class="material-symbols-sharp">Settings</span>
+                        <h3>Settings</h3>
+                    </a>
+                    <a href="#">
+                        <span class="material-symbols-sharp">Info</span>
+                        <h3>About us </h3>
+                    </a>
+
+                    <a href="{{ url_for('logout') }}">                 
+                        <span class="material-symbols-sharp">Logout</span>
+                        <h3>Logout</h3>
+                    </a>
+                </div>
+
+            </aside>
+            <!--aside section end-->
+            <main>
+                <header>
+                    <h1>Heart-Healthy Diet</h1>
+                </header>
+
+                <section class="diet-section">
+                    <h2>Recommended Foods</h2>
+                    <ul class="list-group">
+                        <li class="list-group-item list-group-item-primary">🥗 Leafy greens (Spinach, Kale)</li>
+                        <li class="list-group-item list-group-item-secondary">🐟 Fatty fish (Salmon, Tuna)</li>
+                        <li class="list-group-item list-group-item-success">🍓 Berries (Blueberries, Strawberries)</li>
+                        <li class="list-group-item list-group-item-danger">🥜 Nuts & Seeds (Almonds, Flaxseeds)</li>
+                        <li class="list-group-item list-group-item-warning">🍎 Fruits (Apples, Oranges)</li>
+                        <li class="list-group-item list-group-item-info">🌾 Whole grains (Oats, Brown Rice)</li>
+                        <li class="list-group-item list-group-item-light">🥑 Healthy fats (Olive oil, Avocado)</li>
+                    </ul>
+                </section>
+
+                <section class="avoid-section">
+                    <h2>Foods to Avoid</h2>
+                    <ul class="list-group">
+                        <li class="list-group-item list-group-item-primary">🍟 Fried & Fast Foods</li>
+                        <li class="list-group-item list-group-item-secondary">🧂 High-Sodium Processed Foods</li>
+                        <li class="list-group-item list-group-item-success">🥩 Red & Processed Meats</li>
+                        <li class="list-group-item list-group-item-danger">🥜 Nuts & Seeds (Almonds, Flaxseeds)</li>
+                        <li class="list-group-item list-group-item-warning">🍰 Sugary Snacks & Desserts</li>
+                        <li class="list-group-item list-group-item-info">🍕 Refined Carbs (White Bread, Pasta)</li>
+                        <li class="list-group-item list-group-item-light">🥤 Sugary Drinks (Soda, Energy Drinks)</li>
+                    </ul>
+                </section>
+            </main>
+        </div>
+        <footer>
+            <p>&copy; 2025 HDPS - All Rights Reserved</p>
+        </footer>
+
+        <script src="{{ url_for('static', filename='js/hp.js') }}"></script>
+
+    </body>
+</html>

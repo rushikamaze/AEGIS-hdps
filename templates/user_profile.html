@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile Settings</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/user_profile.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <aside>
+                <div class="top">
+                    <div class="logo"><h2>Beat<span class="danger">-Well</span></h2></div>
+                    <div class="close">
+                        <span class="material-symbols-sharp">close</span>
+                    </div>
+                </div>
+
+                <a href="{{ url_for('index') }}">
+                    <span class="material-symbols-sharp">grid_view</span>
+                    <h3>Homepage</h3>
+                </a>
+
+                <a href="{{ url_for('user_profile') }}" class="active">
+                    <span class="material-symbols-sharp">person_outline</span>
+                    <h3>User profile</h3>
+                </a>
+
+                <a href="{{ url_for('prediction_tool') }}">
+                    <span class="material-symbols-sharp">upload</span>
+                    <h3>Prediction Tool</h3>
+                </a>
+
+                <a href="{{ url_for('dr_info') }}">
+                    <span class="material-symbols-sharp">heart_check</span>
+                    <h3>Dr's Info</h3>
+                </a>
+
+                <a href="{{ url_for('diet') }}">
+                    <span class="material-symbols-sharp">monitor_weight</span>
+                    <h3>Diet</h3>
+                </a>
+                
+                <a href="#">
+                    <span class="material-symbols-sharp">Settings</span>
+                    <h3>Settings</h3>
+                </a>
+
+                <a href="#">
+                    <span class="material-symbols-sharp">info</span>
+                    <h3>About us</h3>
+                </a>
+
+                <a href="{{ url_for('logout') }}">                 
+                    <span class="material-symbols-sharp">logout</span>
+                    <h3>Logout</h3>
+                </a>
+            </aside>
+        
+            <div class="profile-image">
+                <img id="preview-image" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='150' height='150'><rect width='150' height='150' fill='%23dddddd'/><text x='75' y='75' font-size='20' text-anchor='middle' fill='white' dominant-baseline='middle'>Upload Image</text></svg>" alt="Profile Image">
+                <label for="file-upload" class="upload-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M9 16h6v-6h4l-7-7-7 7h4v6zm-4 2h14v2H5v-2z"/>
+                    </svg>
+                </label>
+                <input type="file" id="file-upload" accept="image/*">
+            </div>
+            
+            <div class="user-info">
+                <div class="form-group">
+                    <input type="text" id="display-name" placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <input type="email" id="user-email" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="user-age">Age</label>
+                    <input type="number" id="user-age" placeholder="Age" min="1" max="120">
+                </div>
+                <div class="form-group">
+                    <label for="user-gender">Gender</label>
+                    <select id="user-gender">
+                        <option value="">Select Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        
+        <div class="profile-content">
+            <h2>Profile Settings</h2>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="first-name">Name</label>
+                    <input type="text" id="first-name" placeholder="First name">
+                </div>
+                <div class="form-group">
+                    <label for="surname">Surname</label>
+                    <input type="text" id="surname" placeholder="Surname">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="mobile">Mobile Number</label>
+                <input type="tel" id="mobile" placeholder="Enter phone number">
+            </div>
+
+            <div class="form-group">
+                <label for="blood-group">Blood Group</label>
+                <input type="text" id="blood-group" placeholder="Enter Blood Group">
+            </div>
+
+            <div class="form-group">
+                <label for="address">Address</label>
+                <input type="text" id="address" placeholder="Enter Address">
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="country">Country</label>
+                    <input type="text" id="country" placeholder="Country">
+                </div>
+                <div class="form-group">
+                    <label for="state-region">State/Region</label>
+                    <input type="text" id="state-region" placeholder="State">
+                </div>
+            </div>
+            
+            <button class="save-btn" id="save-profile">Save Profile</button>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/user_profile.js') }}"></script>
+</body>
+</html>

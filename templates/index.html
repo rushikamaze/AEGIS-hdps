@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width", initial-scale="1.0">
+        <title>Homepage</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@24,400,0,0" />        
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/hp.css') }}">
+    </head>
+    <body>
+
+        <div class="container">
+
+            <!--aside section start-->
+            <aside>
+                <div class="top">
+                    <div class="logo"><h2>Beat<span class="danger">-Well</span></h2>
+                    </div>
+                    <div class="close">
+                        <span class="material-symbols-sharp">close</span>
+                    </div>
+                </div>
+                <!--end top-->
+
+                <div class="sidebar" >
+                    <a href="{{ url_for('index') }}" class="active">
+                        <span class="material-symbols-sharp">grid_view</span>
+                        <h3>Homepage</h3>
+                    </a>
+
+                    <a href="{{ url_for('user_profile') }}">
+                        <span class="material-symbols-sharp">person_outline</span>
+                        <h3>User profile</h3>
+                    </a>
+
+                    <a href="{{ url_for('prediction_tool') }}">
+                        <span class="material-symbols-sharp">Upload_2</span>
+                        <h3>Prediction Tool</h3>
+                    </a>
+
+                    <a href="{{ url_for('dr_info') }}">
+                        <span class="material-symbols-sharp">heart_check</span>
+                        <h3>Dr's Info</h3>
+                    </a>
+
+                    <a href="{{ url_for('diet') }}">
+                        <span class="material-symbols-sharp">monitor_weight</span>
+                        <h3>Diet</h3>
+                    </a>
+                    
+                    <a href="#">
+                        <span class="material-symbols-sharp">Settings</span>
+                        <h3>Settings</h3>
+                    </a>
+
+                    <a href="#">
+                        <span class="material-symbols-sharp">Info</span>
+                        <h3>About us </h3>
+                    </a>
+
+                    <a href="{{ url_for('logout') }}">                 
+                        <span class="material-symbols-sharp">Logout</span>
+                        <h3>Logout</h3>
+                    </a>
+                </div>
+
+            </aside>
+            <!--aside section end-->
+
+            <!--main section start-->
+            <main>
+                <h1>Dashboard</h1>
+
+                <div class="date">
+                    <input type="date">
+                </div>
+
+                <div class="welcome-box" id="welcomeBox">
+                    <h2>Welcome</h2>
+                    <p>Welcome to your personal heart health companion. Track, monitor, and improve your cardiovascular wellness with our easy-to-use tools and expert guidance.</p>
+                </div>
+
+                <!--stat insight-->
+                <div class="insights">
+                </div>
+                <!--end insight -->
+                
+            </main>
+            <!--main section end-->
+
+            <!--Right section end-->
+            <div class="right">
+                <div class="top">
+                    <button id="menu_bar">
+                        <span class="material-symbols-sharp">menu</span>
+                    </button>
+                    <div class="theme-toggler">
+                        <span class="material-symbols-sharp">light_mode</span>
+                        <span class="material-symbols-sharp">dark_mode</span>
+                    </div>
+                    <!-- <div class="profile">
+                        <div class="info">
+                            <p><b>Rushika</b></p>
+                            <p>Admin</p>
+                            <small class="text-muted"></small>
+                        </div>
+                        <div class="profile-photo">
+                            <img src="{{ url_for('static', filename='images/img1.jpg') }}" alt="Image">
+                        </div>
+                    </div> -->
+                </div>
+                <!--end top-->
+            </div>
+            <!--Right section end-->
+            
+        </div>
+        <script src="{{ url_for('static', filename='js/hp.js') }}"></script>
+    </body>
+</html>
